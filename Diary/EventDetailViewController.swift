@@ -28,12 +28,17 @@ class EventDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.backBarButtonItem?.title = "Назад"
+        update()
+    }
+    
+    func update() {
+        let startEventString = dateFormatter.string(from: event.dateStart)
+        dateFormatter.dateStyle = .none
+        let endEventString = dateFormatter.string(from: event.dateEnd)
         
         titleLabel.text = event.name
-        dateLabel.text = dateFormatter.string(from: event.dateStart)
+        dateLabel.text = "\(startEventString) - \(endEventString)"
         descriptionLabel.text = event.description
-        
     }
 
 }

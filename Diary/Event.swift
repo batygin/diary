@@ -1,6 +1,6 @@
 import Foundation
 
-struct Event: Equatable {
+struct Event: Equatable, Codable {
     var id: UUID
     var dateStart: Date
     var dateEnd: Date
@@ -15,7 +15,22 @@ struct Event: Equatable {
         case description
     }
     
-    static func eventList() -> [Event] {
+    static let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let archiveURL = documentDirectory.appendingPathComponent("events").appendingPathExtension("plist")
+    
+    static func loadEvents() -> [Event]? {
+        guard let codedEvents = try? Data(contentsOf: archiveURL) else { return nil }
+        let propertyListDecoder = PropertyListDecoder()
+        return try? propertyListDecoder.decode(Array<Event>.self, from: codedEvents)
+    }
+    
+    static func saveEvents(_ events: [Event]) {
+        let propertyListEncoder = PropertyListEncoder()
+        let codetEvents = try? propertyListEncoder.encode(events)
+        try? codetEvents?.write(to: archiveURL, options: .noFileProtection)
+    }
+    
+    static func loadSampleEvent() -> [Event] {
         return [
             Event(id: UUID(), dateStart: Date(), dateEnd: Date(), name: "Mobile-практикум SimbirSoft", description: "Онлайн-практикум Mobile по двум потокам – Android и iOS. Под руководством ведущих специалистов SimbirSoft за 1,5-2 месяца ты освоишь основной технологический стек и выполнишь индивидуальный проект с поддерживаемым и расширяемым кодом.")
         ]
