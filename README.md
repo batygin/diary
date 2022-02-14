@@ -39,3 +39,5 @@
 * Покрытие Unit-тестами: 1-2 теста
 
 ### Решение
+<img src="https://user-images.githubusercontent.com/3718952/153910221-5ef6243a-4976-439d-a558-0c3487f30c3e.png" width="250"/> <img src="https://user-images.githubusercontent.com/3718952/153910232-cd06656d-55f5-4bae-80e3-feedb940e176.png" width="250"/> <img src="https://user-images.githubusercontent.com/3718952/153910237-fe2c0c34-d467-4bcc-a4be-4a62b8bd4ad6.png" width="250"/>
+<img src="https://user-images.githubusercontent.com/3718952/153910242-485f48b0-9218-4ad8-b141-60f784a050c3.png" width="250"/> <img src="https://user-images.githubusercontent.com/3718952/153910244-cd82f64c-d165-4e8e-a6b0-c1f254bbf9ef.png" width="250"/>
