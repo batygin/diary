@@ -32,7 +32,9 @@ class NewEventTableViewController: UITableViewController {
         super.viewDidLoad()
         
         updateSaveButtonState()
-        updateDateLabels(date: dateStartPicker.date)
+
+        dateStartLabel.text = dateFormatter.string(from: dateStartPicker.date)
+        dateEndLabel.text = dateFormatter.string(from: dateEndPicker.date)
     }
     
     func updateSaveButtonState() {
@@ -40,16 +42,12 @@ class NewEventTableViewController: UITableViewController {
         saveButton.isEnabled = shouldEnableSaveButton
     }
     
-    func updateDateLabels(date: Date) {
-        dateStartLabel.text = dateFormatter.string(from: date)
-        dateEndLabel.text = dateFormatter.string(from: date)
-        let calendar = Calendar.current
-        let addOneHour = calendar.date(byAdding: .hour, value: 1, to: date)
-        dateEndLabel.text = dateFormatter.string(from: addOneHour!)
-    }
-    
     @IBAction func datePickerChanged(_ sender: UIDatePicker) {
-        updateDateLabels(date: sender.date)
+        if sender == dateStartPicker {
+            dateStartLabel.text = dateFormatter.string(from: sender.date)
+        } else {
+            dateEndLabel.text = dateFormatter.string(from: sender.date)
+        }
     }
     
     @IBAction func textEditingChange(_ sender: UITextField) {
