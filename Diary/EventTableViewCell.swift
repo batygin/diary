@@ -16,17 +16,13 @@ class EventTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func update(with event: Event) {
-//        timeLabel.text = dateFormatter.string(from: event.dateStart)
         timeLabel.text = dateFormatter.string(from: event.dateStart)
         nameEventLabel.text = event.name
     }

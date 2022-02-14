@@ -31,24 +31,8 @@ class NewEventTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setDateEndPicker()
-        updateDateLabels(date: dateStartPicker.date)
         updateSaveButtonState()
-    }
-    
-    func updateDateLabels(date: Date) {
-        dateStartLabel.text = dateFormatter.string(from: dateStartPicker.date)
-        dateEndLabel.text = dateFormatter.string(from: dateEndPicker.date)
-    }
-    
-    func setDateEndPicker() {
-        let calendar = Calendar.current
-        let addOneHour = calendar.date(byAdding: .hour, value: 1, to: dateStartPicker.date)
-        dateEndPicker.date = addOneHour!
-    }
-    
-    @IBAction func datePickerChanged(_ sender: UIDatePicker) {
-        updateDateLabels(date: sender.date)
+        updateDateLabels(date: dateStartPicker.date)
     }
     
     func updateSaveButtonState() {
@@ -56,12 +40,24 @@ class NewEventTableViewController: UITableViewController {
         saveButton.isEnabled = shouldEnableSaveButton
     }
     
-    @IBAction func returnPressed(_ sender: UITextField) {
-        sender.resignFirstResponder()
+    func updateDateLabels(date: Date) {
+        dateStartLabel.text = dateFormatter.string(from: date)
+        dateEndLabel.text = dateFormatter.string(from: date)
+        let calendar = Calendar.current
+        let addOneHour = calendar.date(byAdding: .hour, value: 1, to: date)
+        dateEndLabel.text = dateFormatter.string(from: addOneHour!)
+    }
+    
+    @IBAction func datePickerChanged(_ sender: UIDatePicker) {
+        updateDateLabels(date: sender.date)
     }
     
     @IBAction func textEditingChange(_ sender: UITextField) {
         updateSaveButtonState()
+    }
+    
+    @IBAction func returnPressed(_ sender: UITextField) {
+        sender.resignFirstResponder()
     }
     
     // MARK: - Table view data source
@@ -93,11 +89,6 @@ class NewEventTableViewController: UITableViewController {
             tableView.endUpdates()
         default:
             break
-        }
-        
-        if dateEndPickerHidden == true {
-            let cell = tableView.cellForRow(at: dateEndLabelIndexPath)
-            cell?.layer.cornerRadius = 10
         }
     }
 

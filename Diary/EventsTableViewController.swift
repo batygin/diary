@@ -83,65 +83,63 @@ class EventsTableViewController: UITableViewController {
         }
         
         for event in selectedDateEvents {
-            guard event != nil else { return }
-            
             let calendar = Calendar.current
             let hourEvent = calendar.component(.hour, from: event?.dateStart ?? Date())
-            let eventTemp = Event(id: UUID(), dateStart: Date(), dateEnd: Date(), name: "", description: "")
             
-            switch event {
-            case _ where hourEvent == 00:
-                hoursList[0].append(event ?? eventTemp)
-            case _ where hourEvent == 01:
-                hoursList[1].append(event ?? eventTemp)
-            case _ where hourEvent == 02:
-                hoursList[2].append(event ?? eventTemp)
-            case _ where hourEvent == 03:
-                hoursList[3].append(event ?? eventTemp)
-            case _ where hourEvent == 04:
-                hoursList[4].append(event ?? eventTemp)
-            case _ where hourEvent == 05:
-                hoursList[5].append(event ?? eventTemp)
-            case _ where hourEvent == 06:
-                hoursList[6].append(event ?? eventTemp)
-            case _ where hourEvent == 07:
-                hoursList[7].append(event ?? eventTemp)
-            case _ where hourEvent == 08:
-                hoursList[8].append(event ?? eventTemp)
-            case _ where hourEvent == 09:
-                hoursList[9].append(event ?? eventTemp)
-            case _ where hourEvent == 10:
-                hoursList[10].append(event ?? eventTemp)
-            case _ where hourEvent == 11:
-                hoursList[11].append(event ?? eventTemp)
-            case _ where hourEvent == 12:
-                hoursList[12].append(event ?? eventTemp)
-            case _ where hourEvent == 13:
-                hoursList[13].append(event ?? eventTemp)
-            case _ where hourEvent == 14:
-                hoursList[14].append(event ?? eventTemp)
-            case _ where hourEvent == 15:
-                hoursList[15].append(event ?? eventTemp)
-            case _ where hourEvent == 16:
-                hoursList[16].append(event ?? eventTemp)
-            case _ where hourEvent == 17:
-                hoursList[17].append(event ?? eventTemp)
-            case _ where hourEvent == 18:
-                hoursList[18].append(event ?? eventTemp)
-            case _ where hourEvent == 19:
-                hoursList[19].append(event ?? eventTemp)
-            case _ where hourEvent == 20:
-                hoursList[20].append(event ?? eventTemp)
-            case _ where hourEvent == 21:
-                hoursList[21].append(event ?? eventTemp)
-            case _ where hourEvent == 22:
-                hoursList[22].append(event ?? eventTemp)
-            case _ where hourEvent == 23:
-                hoursList[23].append(event ?? eventTemp)
-            default:
-                break
+            if event != nil {
+                switch event {
+                case _ where hourEvent == 00:
+                    hoursList[0].append(event!)
+                case _ where hourEvent == 01:
+                    hoursList[1].append(event!)
+                case _ where hourEvent == 02:
+                    hoursList[2].append(event!)
+                case _ where hourEvent == 03:
+                    hoursList[3].append(event!)
+                case _ where hourEvent == 04:
+                    hoursList[4].append(event!)
+                case _ where hourEvent == 05:
+                    hoursList[5].append(event!)
+                case _ where hourEvent == 06:
+                    hoursList[6].append(event!)
+                case _ where hourEvent == 07:
+                    hoursList[7].append(event!)
+                case _ where hourEvent == 08:
+                    hoursList[8].append(event!)
+                case _ where hourEvent == 09:
+                    hoursList[9].append(event!)
+                case _ where hourEvent == 10:
+                    hoursList[10].append(event!)
+                case _ where hourEvent == 11:
+                    hoursList[11].append(event!)
+                case _ where hourEvent == 12:
+                    hoursList[12].append(event!)
+                case _ where hourEvent == 13:
+                    hoursList[13].append(event!)
+                case _ where hourEvent == 14:
+                    hoursList[14].append(event!)
+                case _ where hourEvent == 15:
+                    hoursList[15].append(event!)
+                case _ where hourEvent == 16:
+                    hoursList[16].append(event!)
+                case _ where hourEvent == 17:
+                    hoursList[17].append(event!)
+                case _ where hourEvent == 18:
+                    hoursList[18].append(event!)
+                case _ where hourEvent == 19:
+                    hoursList[19].append(event!)
+                case _ where hourEvent == 20:
+                    hoursList[20].append(event!)
+                case _ where hourEvent == 21:
+                    hoursList[21].append(event!)
+                case _ where hourEvent == 22:
+                    hoursList[22].append(event!)
+                case _ where hourEvent == 23:
+                    hoursList[23].append(event!)
+                default:
+                    break
+                }
             }
-            
         }
         
     }
