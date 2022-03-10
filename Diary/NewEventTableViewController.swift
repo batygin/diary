@@ -9,7 +9,7 @@ class NewEventTableViewController: UITableViewController {
     @IBOutlet weak var dateEndLabel: UILabel!
     @IBOutlet weak var dateEndPicker: UIDatePicker!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
+
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ru_RU")
@@ -17,7 +17,7 @@ class NewEventTableViewController: UITableViewController {
         formatter.timeStyle = .short
         return formatter
     }()
-    
+
     var dateStartPickerHidden = true
     var dateEndPickerHidden = true
     let dateStartLabelIndexPath = IndexPath(row: 0, section: 1)
@@ -25,23 +25,23 @@ class NewEventTableViewController: UITableViewController {
     let dateEndLabelIndexPath = IndexPath(row: 2, section: 1)
     let dateEndPickerIndexPath = IndexPath(row: 3, section: 1)
     let descriptionView = IndexPath(row: 0, section: 2)
-    
+
     var event: Event?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         updateSaveButtonState()
 
         dateStartLabel.text = dateFormatter.string(from: dateStartPicker.date)
         dateEndLabel.text = dateFormatter.string(from: dateEndPicker.date)
     }
-    
+
     func updateSaveButtonState() {
         let shouldEnableSaveButton = titleField.text?.isEmpty == false
         saveButton.isEnabled = shouldEnableSaveButton
     }
-    
+
     @IBAction func datePickerChanged(_ sender: UIDatePicker) {
         if sender == dateStartPicker {
             dateStartLabel.text = dateFormatter.string(from: sender.date)
@@ -49,17 +49,17 @@ class NewEventTableViewController: UITableViewController {
             dateEndLabel.text = dateFormatter.string(from: sender.date)
         }
     }
-    
+
     @IBAction func textEditingChange(_ sender: UITextField) {
         updateSaveButtonState()
     }
-    
+
     @IBAction func returnPressed(_ sender: UITextField) {
         sender.resignFirstResponder()
     }
-    
+
     // MARK: - Table view data source
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath {
         case dateStartPickerIndexPath where dateStartPickerHidden == true:
@@ -72,10 +72,10 @@ class NewEventTableViewController: UITableViewController {
             return UITableView.automaticDimension
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         switch indexPath {
         case dateStartLabelIndexPath:
             dateStartPickerHidden.toggle()
@@ -94,15 +94,15 @@ class NewEventTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        
+
         guard segue.identifier == "saveUnwind" else { return }
-        
+
         let id = UUID()
         let name = titleField.text!
         let dateStart = dateStartPicker.date
         let dateEnd = dateEndPicker.date
         let description = descriptionTextView.text
-        
+
         event = Event(id: id, dateStart: dateStart, dateEnd: dateEnd, name: name, description: description ?? "")
     }
 

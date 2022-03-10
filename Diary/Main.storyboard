@@ -53,18 +53,20 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="15 января 2022" id="TB3-SJ-uoO">
-                        <barButtonItem key="leftBarButtonItem" id="W1J-1y-RCm">
-                            <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
-                            <connections>
-                                <segue destination="zbc-kt-dya" kind="presentation" id="QuN-w1-sSk"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" id="i5t-Ks-elx">
-                            <imageReference key="image" image="calendar" catalog="system" symbolScale="large"/>
-                            <connections>
-                                <action selector="showDatePicker:" destination="J3e-XK-crC" id="Jbe-vZ-Tvb"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem id="i5t-Ks-elx">
+                                <imageReference key="image" image="calendar" catalog="system" symbolScale="large"/>
+                                <connections>
+                                    <action selector="showDatePicker:" destination="J3e-XK-crC" id="Jbe-vZ-Tvb"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem id="W1J-1y-RCm">
+                                <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
+                                <connections>
+                                    <segue destination="zbc-kt-dya" kind="presentation" id="QuN-w1-sSk"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="selectDate" destination="i5t-Ks-elx" id="38g-bj-EfM"/>

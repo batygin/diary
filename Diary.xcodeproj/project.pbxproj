@@ -13,7 +13,6 @@
 		72157C2A278DFFFA005C8A48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72157C29278DFFFA005C8A48 /* Assets.xcassets */; };
 		72157C2D278DFFFA005C8A48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72157C2B278DFFFA005C8A48 /* LaunchScreen.storyboard */; };
 		726AD6E5279D874700DA51D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 726AD6E4279D874700DA51D1 /* Main.storyboard */; };
-		72AF623E27972D10001C0498 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AF623D27972D10001C0498 /* EventTableViewCell.swift */; };
 		72BC62DB27B57DE50063D788 /* NewEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BC62DA27B57DE50063D788 /* NewEventTableViewController.swift */; };
 		72EE456227948358001920C2 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EE456127948358001920C2 /* EventsTableViewController.swift */; };
 		72F1EC6B2795EDA800C84057 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1EC6A2795EDA800C84057 /* Event.swift */; };
@@ -28,7 +27,6 @@
 		72157C2C278DFFFA005C8A48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		72157C2E278DFFFA005C8A48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		726AD6E4279D874700DA51D1 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		72AF623D27972D10001C0498 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		72BC62DA27B57DE50063D788 /* NewEventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventTableViewController.swift; sourceTree = "<group>"; };
 		72EE456127948358001920C2 /* EventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		72F1EC6A2795EDA800C84057 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -70,7 +68,6 @@
 				720CE0DE27B1973D00CC3068 /* EventDetailViewController.swift */,
 				72157C22278DFFFA005C8A48 /* SceneDelegate.swift */,
 				72EE456127948358001920C2 /* EventsTableViewController.swift */,
-				72AF623D27972D10001C0498 /* EventTableViewCell.swift */,
 				72F1EC6A2795EDA800C84057 /* Event.swift */,
 				72157C29278DFFFA005C8A48 /* Assets.xcassets */,
 				72157C2B278DFFFA005C8A48 /* LaunchScreen.storyboard */,
@@ -89,6 +86,7 @@
 				72157C19278DFFFA005C8A48 /* Sources */,
 				72157C1A278DFFFA005C8A48 /* Frameworks */,
 				72157C1B278DFFFA005C8A48 /* Resources */,
+				7268773127D643AC002314BB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -145,6 +143,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7268773127D643AC002314BB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		72157C19278DFFFA005C8A48 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -152,7 +170,6 @@
 			files = (
 				72BC62DB27B57DE50063D788 /* NewEventTableViewController.swift in Sources */,
 				720CE0DF27B1973D00CC3068 /* EventDetailViewController.swift in Sources */,
-				72AF623E27972D10001C0498 /* EventTableViewCell.swift in Sources */,
 				72F1EC6B2795EDA800C84057 /* Event.swift in Sources */,
 				72157C21278DFFFA005C8A48 /* AppDelegate.swift in Sources */,
 				72157C23278DFFFA005C8A48 /* SceneDelegate.swift in Sources */,
@@ -304,6 +321,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -333,6 +351,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
