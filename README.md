@@ -39,5 +39,7 @@
 * Покрытие Unit-тестами: 1-2 теста
 
 ### Решение
-<img src="https://user-images.githubusercontent.com/3718952/153910221-5ef6243a-4976-439d-a558-0c3487f30c3e.png" width="250"/> <img src="https://user-images.githubusercontent.com/3718952/153910232-cd06656d-55f5-4bae-80e3-feedb940e176.png" width="250"/> <img src="https://user-images.githubusercontent.com/3718952/153910237-fe2c0c34-d467-4bcc-a4be-4a62b8bd4ad6.png" width="250"/>
-<img src="https://user-images.githubusercontent.com/3718952/153910242-485f48b0-9218-4ad8-b141-60f784a050c3.png" width="250"/> <img src="https://user-images.githubusercontent.com/3718952/153910244-cd82f64c-d165-4e8e-a6b0-c1f254bbf9ef.png" width="250"/>
+⚠️ Поддержку сделал с версии iOS 13+. MacOS Monterey не поддерживает эмулятор iOS ниже 13 версии. Возможно причина в процессоре M1.
+
+<img src="https://user-images.githubusercontent.com/3718952/158062555-9c2e933f-b106-4b8d-8af4-a91ae05053e1.png" width="250"/> <img src="https://user-images.githubusercontent.com/3718952/158062605-0008d76c-e930-4f43-a012-d609bd5a5566.png" width="250"/> <img src="https://user-images.githubusercontent.com/3718952/158062631-906a3b0e-7286-43b0-9e2d-934dec9363b3.png" width="250"/>
+<img src="https://user-images.githubusercontent.com/3718952/153910242-485f48b0-9218-4ad8-b141-60f784a050c3.png" width="250"/> <img src="https://user-images.githubusercontent.com/3718952/158062650-80831068-1f4e-4945-9c54-c94bcd72a0a6.png" width="250"/>
