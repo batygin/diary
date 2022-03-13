@@ -188,12 +188,16 @@ class EventsTableViewController: UITableViewController {
 
     @IBAction func unwindToNewEvent(segue: UIStoryboardSegue) {
         guard segue.identifier == "saveUnwind",
-              let sourceViewController = segue.source as? NewEventTableViewController,
+              let sourceViewController = segue.source as? AddEditEventTableViewController,
               let event = sourceViewController.event else {
                   return
               }
+        if let indexEvent = events.firstIndex(where: { $0.id == event.id }) {
+            events[indexEvent] = event
+        } else {
+            events.append(event)
+        }
 
-        events.append(event)
         updateHoursList()
         tableView.reloadData()
         Event.saveEvents(events)

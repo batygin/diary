@@ -1,6 +1,6 @@
 import UIKit
 
-class NewEventTableViewController: UITableViewController {
+class AddEditEventTableViewController: UITableViewController {
 
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
@@ -28,6 +28,15 @@ class NewEventTableViewController: UITableViewController {
 
     var event: Event?
 
+    init?(coder: NSCoder, event: Event) {
+        self.event = event
+        super.init(coder: coder)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,6 +44,17 @@ class NewEventTableViewController: UITableViewController {
 
         dateStartLabel.text = dateFormatter.string(from: dateStartPicker.date)
         dateEndLabel.text = dateFormatter.string(from: dateEndPicker.date)
+
+        if let event = event {
+            titleField.text = event.name
+            descriptionTextView.text = event.description
+            dateStartPicker.date = event.dateStart
+            dateEndPicker.date = event.dateEnd
+            dateStartLabel.text = dateFormatter.string(from: event.dateStart)
+            dateEndLabel.text = dateFormatter.string(from: event.dateEnd)
+            title = "Изменить событие"
+            saveButton.title = "Сохранить"
+        }
     }
 
     func updateSaveButtonState() {
@@ -48,6 +68,8 @@ class NewEventTableViewController: UITableViewController {
         } else {
             dateEndLabel.text = dateFormatter.string(from: sender.date)
         }
+
+        updateSaveButtonState()
     }
 
     @IBAction func textEditingChange(_ sender: UITextField) {
@@ -97,7 +119,7 @@ class NewEventTableViewController: UITableViewController {
 
         guard segue.identifier == "saveUnwind" else { return }
 
-        let id = UUID()
+        let id = event?.id ?? UUID()
         let name = titleField.text!
         let dateStart = dateStartPicker.date
         let dateEnd = dateEndPicker.date

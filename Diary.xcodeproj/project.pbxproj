@@ -13,7 +13,7 @@
 		72157C2A278DFFFA005C8A48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72157C29278DFFFA005C8A48 /* Assets.xcassets */; };
 		72157C2D278DFFFA005C8A48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72157C2B278DFFFA005C8A48 /* LaunchScreen.storyboard */; };
 		726AD6E5279D874700DA51D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 726AD6E4279D874700DA51D1 /* Main.storyboard */; };
-		72BC62DB27B57DE50063D788 /* NewEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BC62DA27B57DE50063D788 /* NewEventTableViewController.swift */; };
+		72BC62DB27B57DE50063D788 /* AddEditEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BC62DA27B57DE50063D788 /* AddEditEventTableViewController.swift */; };
 		72EE456227948358001920C2 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EE456127948358001920C2 /* EventsTableViewController.swift */; };
 		72F1EC6B2795EDA800C84057 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1EC6A2795EDA800C84057 /* Event.swift */; };
 /* End PBXBuildFile section */
@@ -27,7 +27,7 @@
 		72157C2C278DFFFA005C8A48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		72157C2E278DFFFA005C8A48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		726AD6E4279D874700DA51D1 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		72BC62DA27B57DE50063D788 /* NewEventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventTableViewController.swift; sourceTree = "<group>"; };
+		72BC62DA27B57DE50063D788 /* AddEditEventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditEventTableViewController.swift; sourceTree = "<group>"; };
 		72EE456127948358001920C2 /* EventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		72F1EC6A2795EDA800C84057 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,18 +62,34 @@
 		72157C1F278DFFFA005C8A48 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
+				72DF8B1427DB749D002E1F5C /* Models */,
+				72DF8B1527DB74C2002E1F5C /* View Controllers */,
 				72157C20278DFFFA005C8A48 /* AppDelegate.swift */,
-				726AD6E4279D874700DA51D1 /* Main.storyboard */,
-				72BC62DA27B57DE50063D788 /* NewEventTableViewController.swift */,
-				720CE0DE27B1973D00CC3068 /* EventDetailViewController.swift */,
 				72157C22278DFFFA005C8A48 /* SceneDelegate.swift */,
-				72EE456127948358001920C2 /* EventsTableViewController.swift */,
-				72F1EC6A2795EDA800C84057 /* Event.swift */,
-				72157C29278DFFFA005C8A48 /* Assets.xcassets */,
+				726AD6E4279D874700DA51D1 /* Main.storyboard */,
 				72157C2B278DFFFA005C8A48 /* LaunchScreen.storyboard */,
+				72157C29278DFFFA005C8A48 /* Assets.xcassets */,
 				72157C2E278DFFFA005C8A48 /* Info.plist */,
 			);
 			path = Diary;
+			sourceTree = "<group>";
+		};
+		72DF8B1427DB749D002E1F5C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				72F1EC6A2795EDA800C84057 /* Event.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		72DF8B1527DB74C2002E1F5C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				72BC62DA27B57DE50063D788 /* AddEditEventTableViewController.swift */,
+				720CE0DE27B1973D00CC3068 /* EventDetailViewController.swift */,
+				72EE456127948358001920C2 /* EventsTableViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,7 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72BC62DB27B57DE50063D788 /* NewEventTableViewController.swift in Sources */,
+				72BC62DB27B57DE50063D788 /* AddEditEventTableViewController.swift in Sources */,
 				720CE0DF27B1973D00CC3068 /* EventDetailViewController.swift in Sources */,
 				72F1EC6B2795EDA800C84057 /* Event.swift in Sources */,
 				72157C21278DFFFA005C8A48 /* AppDelegate.swift in Sources */,

@@ -21,8 +21,8 @@ class EventDetailViewController: UIViewController {
         super.init(coder: coder)
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
@@ -39,6 +39,12 @@ class EventDetailViewController: UIViewController {
         titleLabel.text = event.name
         dateLabel.text = "\(startEventString) - \(endEventString)"
         descriptionLabel.text = event.description
+    }
+
+// MARK: - Navigation
+
+    @IBSegueAction func changeEvent(_ coder: NSCoder, sender: Any?) -> AddEditEventTableViewController? {
+        return AddEditEventTableViewController(coder: coder, event: event)
     }
 
 }

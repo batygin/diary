@@ -79,7 +79,7 @@
         <!--Новое событие-->
         <scene sceneID="sAe-Oa-DMf">
             <objects>
-                <tableViewController id="X6z-Nk-hQ4" customClass="NewEventTableViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="X6z-Nk-hQ4" customClass="AddEditEventTableViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="IkY-E7-qOG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -247,12 +247,12 @@
                     <navigationItem key="navigationItem" title="Новое событие" id="C6d-3w-eQZ">
                         <barButtonItem key="leftBarButtonItem" title="Отмена" id="af9-T4-XVP">
                             <connections>
-                                <segue destination="t3H-A1-sEE" kind="unwind" unwindAction="unwindToNewEventWithSegue:" id="Wcz-eg-GRj"/>
+                                <segue destination="t3H-A1-sEE" kind="unwind" unwindAction="unwindToNewEventWithSegue:" id="Gf1-ym-Xqb"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Добавить" style="done" id="Hoz-um-6i7">
                             <connections>
-                                <segue destination="t3H-A1-sEE" kind="unwind" identifier="saveUnwind" unwindAction="unwindToNewEventWithSegue:" id="dJ8-O3-yAm"/>
+                                <segue destination="t3H-A1-sEE" kind="unwind" identifier="saveUnwind" unwindAction="unwindToNewEventWithSegue:" id="w84-qD-vLy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -332,7 +332,13 @@
                             <constraint firstItem="GsG-MW-B49" firstAttribute="leading" secondItem="OOO-X2-5wF" secondAttribute="leading" constant="16" id="qGe-pg-13j"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Событие" id="HER-QN-x6C"/>
+                    <navigationItem key="navigationItem" title="Событие" id="HER-QN-x6C">
+                        <barButtonItem key="rightBarButtonItem" title="Изменить" id="Ggs-CD-pFt">
+                            <connections>
+                                <segue destination="zbc-kt-dya" kind="presentation" id="y6i-0s-mqd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="dateLabel" destination="FqX-fE-V5e" id="6aK-ET-FJp"/>
                         <outlet property="descriptionLabel" destination="hst-RG-eix" id="ECV-hW-s5U"/>
@@ -354,7 +360,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="X6z-Nk-hQ4" kind="relationship" relationship="rootViewController" id="NFM-gX-vxp"/>
+                        <segue destination="X6z-Nk-hQ4" kind="relationship" relationship="rootViewController" destinationCreationSelector="changeEvent:sender:" id="NFM-gX-vxp"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wLl-hf-dOA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -362,6 +368,9 @@
             <point key="canvasLocation" x="3347.826086956522" y="1659.375"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="y6i-0s-mqd"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="plus" catalog="system" width="128" height="113"/>
