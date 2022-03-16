@@ -8,6 +8,8 @@ class EventDetailViewController: UIViewController {
 
     var event: Event!
 
+    var events = [Event]()
+
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ru_RU")
@@ -28,6 +30,12 @@ class EventDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let saveEvents = Event.loadEvents() {
+            events = saveEvents
+        } else {
+            events = Event.loadSampleEvent()
+        }
+
         update()
     }
 
@@ -45,6 +53,22 @@ class EventDetailViewController: UIViewController {
 
     @IBSegueAction func changeEvent(_ coder: NSCoder, sender: Any?) -> AddEditEventTableViewController? {
         return AddEditEventTableViewController(coder: coder, event: event)
+    }
+
+    @IBAction func unwindToNewEvent(segue: UIStoryboardSegue) {
+        guard segue.identifier == "saveUnwind",
+              let sourceViewController = segue.source as? AddEditEventTableViewController,
+              let event = sourceViewController.event else {
+                  return
+              }
+
+        if let indexEvent = events.firstIndex(where: { $0.id == event.id }) {
+            events[indexEvent] = event
+            self.event = event
+            update()
+        }
+
+        Event.saveEvents(events)
     }
 
 }

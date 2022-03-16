@@ -35,12 +35,8 @@ class EventsTableViewController: UITableViewController {
         "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"
     ]
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        navigationItem.title = dateFormatter.string(from: datePicker.date)
-        navigationItem.leftBarButtonItem = editButtonItem
-        editButtonItem.title = "Изменить"
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
         if let saveEvents = Event.loadEvents() {
             events = saveEvents
@@ -49,6 +45,16 @@ class EventsTableViewController: UITableViewController {
         }
 
         updateHoursList()
+        tableView.reloadData()
+        Event.saveEvents(events)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        navigationItem.title = dateFormatter.string(from: datePicker.date)
+        navigationItem.leftBarButtonItem = editButtonItem
+        editButtonItem.title = "Изменить"
     }
 
     @IBAction func showDatePicker(_ sender: UIBarButtonItem) {

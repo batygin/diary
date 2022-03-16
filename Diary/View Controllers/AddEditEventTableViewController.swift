@@ -1,6 +1,6 @@
 import UIKit
 
-class AddEditEventTableViewController: UITableViewController {
+class AddEditEventTableViewController: UITableViewController, UITextViewDelegate {
 
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
@@ -40,6 +40,8 @@ class AddEditEventTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        descriptionTextView.delegate = self
+
         updateSaveButtonState()
 
         dateStartLabel.text = dateFormatter.string(from: dateStartPicker.date)
@@ -78,6 +80,10 @@ class AddEditEventTableViewController: UITableViewController {
 
     @IBAction func returnPressed(_ sender: UITextField) {
         sender.resignFirstResponder()
+    }
+
+    func textViewDidChange(_ textView: UITextView) {
+        updateSaveButtonState()
     }
 
     // MARK: - Table view data source
