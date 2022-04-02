@@ -1,0 +1,5 @@
+included:
+ - Diary
+
+excluded:
+ - Pods
