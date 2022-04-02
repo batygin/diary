@@ -1,4 +1,7 @@
 import UIKit
+import RealmSwift
+
+// swiftlint:disable force_try
 
 class EventDetailViewController: UIViewController {
 
@@ -9,6 +12,8 @@ class EventDetailViewController: UIViewController {
     var event: Event!
 
     var events = [Event]()
+
+    var realm: Realm!
 
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -30,12 +35,6 @@ class EventDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let saveEvents = Event.loadEvents() {
-            events = saveEvents
-        } else {
-            events = Event.loadSampleEvent()
-        }
-
         update()
     }
 
@@ -46,7 +45,7 @@ class EventDetailViewController: UIViewController {
 
         titleLabel.text = event.name
         dateLabel.text = "\(startEventString) - \(endEventString)"
-        descriptionLabel.text = event.description
+        descriptionLabel.text = event.notes
     }
 
 // MARK: - Navigation
@@ -62,13 +61,14 @@ class EventDetailViewController: UIViewController {
                   return
               }
 
-        if let indexEvent = events.firstIndex(where: { $0.id == event.id }) {
-            events[indexEvent] = event
-            self.event = event
-            update()
-        }
+        realm = try! Realm()
 
-        Event.saveEvents(events)
+        try! realm.write({
+            realm.add(event, update: .modified)
+        })
+
+        self.event = event
+        update()
     }
 
 }

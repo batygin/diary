@@ -12,6 +12,7 @@
 		72157C23278DFFFA005C8A48 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72157C22278DFFFA005C8A48 /* SceneDelegate.swift */; };
 		72157C2A278DFFFA005C8A48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72157C29278DFFFA005C8A48 /* Assets.xcassets */; };
 		72157C2D278DFFFA005C8A48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72157C2B278DFFFA005C8A48 /* LaunchScreen.storyboard */; };
+		725C663227F833D600C0E89F /* Pods_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B557A3833C27D1D282FE3B /* Pods_Diary.framework */; };
 		726AD6E5279D874700DA51D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 726AD6E4279D874700DA51D1 /* Main.storyboard */; };
 		72BC62DB27B57DE50063D788 /* AddEditEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BC62DA27B57DE50063D788 /* AddEditEventTableViewController.swift */; };
 		72EE456227948358001920C2 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EE456127948358001920C2 /* EventsTableViewController.swift */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24B557A3833C27D1D282FE3B /* Pods_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CEE969B35926A159DB1665E /* Pods-Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diary.release.xcconfig"; path = "Target Support Files/Pods-Diary/Pods-Diary.release.xcconfig"; sourceTree = "<group>"; };
 		720CE0DE27B1973D00CC3068 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		72157C1D278DFFFA005C8A48 /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72157C20278DFFFA005C8A48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +33,7 @@
 		72BC62DA27B57DE50063D788 /* AddEditEventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditEventTableViewController.swift; sourceTree = "<group>"; };
 		72EE456127948358001920C2 /* EventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		72F1EC6A2795EDA800C84057 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		A41EBCB5D90C33E9EB1694B0 /* Pods-Diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diary.debug.xcconfig"; path = "Target Support Files/Pods-Diary/Pods-Diary.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				725C663227F833D600C0E89F /* Pods_Diary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +53,8 @@
 			children = (
 				72157C1F278DFFFA005C8A48 /* Diary */,
 				72157C1E278DFFFA005C8A48 /* Products */,
+				841A513C5CA49B7B19D5CEDB /* Pods */,
+				C74605827A1BE8D5623BEF83 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +99,23 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
+		841A513C5CA49B7B19D5CEDB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A41EBCB5D90C33E9EB1694B0 /* Pods-Diary.debug.xcconfig */,
+				4CEE969B35926A159DB1665E /* Pods-Diary.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C74605827A1BE8D5623BEF83 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				24B557A3833C27D1D282FE3B /* Pods_Diary.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -99,10 +123,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 72157C31278DFFFA005C8A48 /* Build configuration list for PBXNativeTarget "Diary" */;
 			buildPhases = (
+				E57DEC37853EB7A9425BA2DD /* [CP] Check Pods Manifest.lock */,
 				72157C19278DFFFA005C8A48 /* Sources */,
 				72157C1A278DFFFA005C8A48 /* Frameworks */,
 				72157C1B278DFFFA005C8A48 /* Resources */,
 				7268773127D643AC002314BB /* ShellScript */,
+				3DFCC6E061C48D562E6895D1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -160,6 +186,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3DFCC6E061C48D562E6895D1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Diary/Pods-Diary-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Diary/Pods-Diary-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Diary/Pods-Diary-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7268773127D643AC002314BB /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -175,7 +218,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		E57DEC37853EB7A9425BA2DD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Diary-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -325,6 +390,7 @@
 		};
 		72157C32278DFFFA005C8A48 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A41EBCB5D90C33E9EB1694B0 /* Pods-Diary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -355,6 +421,7 @@
 		};
 		72157C33278DFFFA005C8A48 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CEE969B35926A159DB1665E /* Pods-Diary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

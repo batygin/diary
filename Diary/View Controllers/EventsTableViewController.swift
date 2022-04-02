@@ -1,4 +1,7 @@
 import UIKit
+import RealmSwift
+
+// swiftlint:disable force_try
 
 class EventsTableViewController: UITableViewController {
 
@@ -26,9 +29,13 @@ class EventsTableViewController: UITableViewController {
         return formatter
     }()
 
+    var realm: Realm!
+
     var hoursList = Array(repeating: [Event](), count: 24)
 
-    var events = [Event]()
+    var events: Results<Event> {
+        return realm.objects(Event.self)
+    }
 
     let sectionsTitle = [
         "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11",
@@ -38,19 +45,16 @@ class EventsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if let saveEvents = Event.loadEvents() {
-            events = saveEvents
-        } else {
-            events = Event.loadSampleEvent()
-        }
+        realm = try! Realm()
 
         updateHoursList()
         tableView.reloadData()
-        Event.saveEvents(events)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
 
         navigationItem.title = dateFormatter.string(from: datePicker.date)
         navigationItem.leftBarButtonItem = editButtonItem
@@ -109,7 +113,7 @@ class EventsTableViewController: UITableViewController {
         let selectedDateString = dateFormatter.string(from: datePicker.date)
 
         let selectedDateEvents = events.map { event -> Event? in
-            if dateFormatter.string(from: event.dateStart) == selectedDateString {
+            if self.dateFormatter.string(from: event.dateStart) == selectedDateString {
                 return event
             }
             return nil
@@ -119,7 +123,13 @@ class EventsTableViewController: UITableViewController {
             let calendar = Calendar.current
             let hourEvent = calendar.component(.hour, from: event?.dateStart ?? Date())
 
-            if let index = sectionsTitle.firstIndex(where: { $0 == String(hourEvent) }),
+            var hourEventString = String(hourEvent)
+
+            if hourEventString.count == 1 {
+                hourEventString = "0\(hourEventString)"
+            }
+
+            if let index = sectionsTitle.firstIndex(where: { $0 == hourEventString }),
                let event = event {
                 hoursList[index].append(event)
             }
@@ -165,13 +175,13 @@ class EventsTableViewController: UITableViewController {
                             forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let event = hoursList[indexPath.section][indexPath.row]
-            guard let indexEvent = events.firstIndex(where: { $0.id == event.id }) else { return }
 
-            events.remove(at: indexEvent)
+            try! self.realm.write({
+                self.realm.delete(event)
+            })
+
             updateHoursList()
             tableView.deleteRows(at: [indexPath], with: .automatic)
-
-            Event.saveEvents(events)
         }
     }
 
@@ -198,15 +208,13 @@ class EventsTableViewController: UITableViewController {
               let event = sourceViewController.event else {
                   return
               }
-        if let indexEvent = events.firstIndex(where: { $0.id == event.id }) {
-            events[indexEvent] = event
-        } else {
-            events.append(event)
-        }
+
+        try! realm.write({
+            realm.add(event, update: .modified)
+        })
 
         updateHoursList()
         tableView.reloadData()
-        Event.saveEvents(events)
     }
 
 }

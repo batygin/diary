@@ -1,44 +1,27 @@
 import Foundation
+import RealmSwift
 
-struct Event: Equatable, Codable {
-    var id: UUID
-    var dateStart: Date
-    var dateEnd: Date
-    var name: String
-    var description: String
+class Event: Object {
+    @Persisted(primaryKey: true) var id: UUID
+    @Persisted var name: String
+    @Persisted var notes: String
+    @Persisted var dateStart: Date
+    @Persisted var dateEnd: Date
+
+    convenience init(id: UUID, name: String, notes: String, dateStart: Date, dateEnd: Date) {
+        self.init()
+        self.id = id
+        self.name = name
+        self.notes = notes
+        self.dateStart = dateStart
+        self.dateEnd = dateEnd
+    }
 
     private enum CodingKeys: String, CodingKey {
         case id
+        case name
+        case notes = "description"
         case dateStart = "date_start"
         case dateEnd = "date_finish"
-        case name
-        case description
-    }
-
-    static let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    static let archiveURL = documentDirectory.appendingPathComponent("events").appendingPathExtension("plist")
-
-    static func loadEvents() -> [Event]? {
-        guard let codedEvents = try? Data(contentsOf: archiveURL) else { return nil }
-        let propertyListDecoder = PropertyListDecoder()
-        return try? propertyListDecoder.decode(Array<Event>.self, from: codedEvents)
-    }
-
-    static func saveEvents(_ events: [Event]) {
-        let propertyListEncoder = PropertyListEncoder()
-        let codetEvents = try? propertyListEncoder.encode(events)
-        try? codetEvents?.write(to: archiveURL, options: .noFileProtection)
-    }
-
-    static func loadSampleEvent() -> [Event] {
-        return [
-            Event(
-                id: UUID(),
-                dateStart: Date(),
-                dateEnd: Date(),
-                name: "Mobile-практикум SimbirSoft",
-                description: "Онлайн-практикум Mobile по двум потокам – Android и iOS."
-            )
-        ]
     }
 }

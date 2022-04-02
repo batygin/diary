@@ -49,7 +49,7 @@ class AddEditEventTableViewController: UITableViewController, UITextViewDelegate
 
         if let event = event {
             titleField.text = event.name
-            descriptionTextView.text = event.description
+            descriptionTextView.text = event.notes
             dateStartPicker.date = event.dateStart
             dateEndPicker.date = event.dateEnd
             dateStartLabel.text = dateFormatter.string(from: event.dateStart)
@@ -129,9 +129,15 @@ class AddEditEventTableViewController: UITableViewController, UITextViewDelegate
         let name = titleField.text!
         let dateStart = dateStartPicker.date
         let dateEnd = dateEndPicker.date
-        let description = descriptionTextView.text
+        let notes = descriptionTextView.text
 
-        event = Event(id: id, dateStart: dateStart, dateEnd: dateEnd, name: name, description: description ?? "")
+        event = Event(
+            id: id,
+            name: name,
+            notes: notes ?? "",
+            dateStart: dateStart,
+            dateEnd: dateEnd
+        )
     }
 
 }
